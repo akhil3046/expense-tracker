@@ -8,6 +8,7 @@ import { ArrowDownIcon, ArrowUpIcon } from './icons/Icons';
 
 interface LoanTrackerProps {
     loans: Loan[];
+    allLoans: Loan[];
     addLoan: (loan: Omit<Loan, 'id' | 'status'>) => void;
     updateLoanStatus: (id: string, status: LoanStatus) => void;
     deleteLoan: (id: string) => void;
@@ -15,7 +16,7 @@ interface LoanTrackerProps {
     setFilter: (filter: Filter) => void;
 }
 
-const LoanTracker: React.FC<LoanTrackerProps> = ({ loans, addLoan, updateLoanStatus, deleteLoan, filter, setFilter }) => {
+const LoanTracker: React.FC<LoanTrackerProps> = ({ loans, allLoans, addLoan, updateLoanStatus, deleteLoan, filter, setFilter }) => {
     
     const formatCurrency = (value: number) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(value);
 
@@ -53,7 +54,7 @@ const LoanTracker: React.FC<LoanTrackerProps> = ({ loans, addLoan, updateLoanSta
                     <LoanForm addLoan={addLoan} />
                 </div>
                 <div className="lg:col-span-2">
-                    <LoanList loans={loans} updateLoanStatus={updateLoanStatus} deleteLoan={deleteLoan} />
+                    <LoanList loans={allLoans} updateLoanStatus={updateLoanStatus} deleteLoan={deleteLoan} />
                 </div>
             </div>
         </div>

@@ -1,32 +1,4 @@
-
-import { useState, useEffect } from 'react';
-
-function useLocalStorage<T,>(key: string, initialValue: T): [T, React.Dispatch<React.SetStateAction<T>>] {
-    const [storedValue, setStoredValue] = useState<T>(() => {
-        if (typeof window === 'undefined') {
-            return initialValue;
-        }
-        try {
-            const item = window.localStorage.getItem(key);
-            return item ? JSON.parse(item) : initialValue;
-        } catch (error) {
-            console.error(error);
-            return initialValue;
-        }
-    });
-
-    useEffect(() => {
-        try {
-            if (typeof window !== 'undefined') {
-                const valueToStore = JSON.stringify(storedValue);
-                window.localStorage.setItem(key, valueToStore);
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }, [key, storedValue]);
-
-    return [storedValue, setStoredValue];
-}
-
-export default useLocalStorage;
+// This file is no longer in use.
+// Data persistence logic has been moved to a more robust, application-specific
+// API client located at `api/client.ts`.
+// This file can be safely deleted from the project.
