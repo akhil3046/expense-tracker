@@ -1,0 +1,5 @@
+{
+  "name": "Expense Tracker Pro",
+  "description": "A clean, dark-themed application to log daily expenses and track lent and borrowed money with insightful dashboards and reports.",
+  "requestFramePermissions": []
+}
